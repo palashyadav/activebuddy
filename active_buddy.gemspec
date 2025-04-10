@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/your_username/active_buddy"
   spec.license       = "MIT"
 
-  spec.files = `git ls-files`.split("\n")
+  spec.files = `git ls-files`.split("\n").reject { |f| f =~ /\.gem$/ }
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activerecord"
