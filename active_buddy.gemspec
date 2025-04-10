@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/your_username/active_buddy"
   spec.license       = "MIT"
 
-  spec.files         = Dir["lib/**/*.rb", "README.md"]
+  spec.files = `git ls-files`.split("\n")
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activerecord"
