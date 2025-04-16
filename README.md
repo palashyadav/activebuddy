@@ -53,6 +53,7 @@ require 'active_Buddy'
 analyzer = ActiveBuddy::Analyzer.new(User)
 puts analyzer.suggest_validations
 puts analyzer.suggest_associations
+puts analyzer.quick_audit
 ```
 
 Output:
@@ -83,6 +84,22 @@ ActiveBuddy automatically picks up and suggests validations based on:
 | `status`, `role`, `type` | presence |
 
 Also detects and formats associations from ActiveRecord relationships.
+
+
+🔍 Auditing model: User
+  Fields detected: id, email, password, account_id, created_at, updated_at
+
+  ✅ Suggested Validations:
+  validates :email, presence: true
+  validates :email, uniqueness: true
+
+  🔗 Suggested Associations:
+  belongs_to :account
+
+  💡 Tips:
+  - Consider adding presence validations for key fields.
+  - Add associations if your model connects to others (like belongs_to, has_many).
+
 
 ---
 

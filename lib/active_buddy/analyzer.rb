@@ -52,5 +52,26 @@ module ActiveBuddy
         "#{assoc.macro} :#{assoc.name}"
       end
     end
+
+    def quick_audit
+      report = []
+      report << "🔍 Auditing model: #{model.name}"
+      report << "Fields detected: #{model.columns.map(&:name).join(', ')}"
+      
+      validations = suggest_validations
+      associations = suggest_associations
+
+      report << "\n✅ Suggested Validations:"
+      report += validations.empty? ? ["(none found)"] : validations
+
+      report << "\n🔗 Suggested Associations:"
+      report += associations.empty? ? ["(none found)"] : associations
+
+      report << "\n💡 Tips:"
+      report << "- Consider adding presence validations for key fields."
+      report << "- Add associations if your model connects to others (like belongs_to, has_many)."
+      report.join("\n")
+    end
+    
   end
 end
